@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://core/obj.tscn" type="PackedScene" id=1]
+[ext_resource path="res://core/chara.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 13.8176, 12.2723 )
+
+[node name="chara" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Area2D" parent="." index="0"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 1 )
+

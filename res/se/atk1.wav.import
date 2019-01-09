@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/atk1.wav-adb751be108163e7ce1517015f1d4c1a.sample"
+
+[deps]
+
+source_file="res://res/se/atk1.wav"
+dest_files=[ "res://.import/atk1.wav-adb751be108163e7ce1517015f1d4c1a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

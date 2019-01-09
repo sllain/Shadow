@@ -1,0 +1,11 @@
+extends Reference
+class_name AtkInfo
+var rate
+var x
+var y
+var pa
+var pb
+var atkCha
+var hitCha
+var atkObj
+var hitObj

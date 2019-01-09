@@ -1,0 +1,754 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://core/chara.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ex/chara/player/player.gd" type="Script" id=2]
+[ext_resource path="res://res/chara/player/skl1_6.png" type="Texture" id=3]
+[ext_resource path="res://core/camera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://core/camera2D.gd" type="Script" id=5]
+[ext_resource path="res://res/chara/player/atk2_5.png" type="Texture" id=6]
+[ext_resource path="res://res/chara/player/atk2_4.png" type="Texture" id=7]
+[ext_resource path="res://res/chara/player/skl1_1.png" type="Texture" id=8]
+[ext_resource path="res://res/chara/player/skl1_3.png" type="Texture" id=9]
+[ext_resource path="res://res/chara/player/skl1_4.png" type="Texture" id=10]
+[ext_resource path="res://res/chara/player/skl1_5.png" type="Texture" id=11]
+[ext_resource path="res://res/chara/player/atk1_1.png" type="Texture" id=12]
+[ext_resource path="res://res/chara/player/atk1_2.png" type="Texture" id=13]
+[ext_resource path="res://res/chara/player/atk1_3.png" type="Texture" id=14]
+[ext_resource path="res://res/chara/player/atk3_3.png" type="Texture" id=15]
+[ext_resource path="res://res/chara/player/atk1_5.png" type="Texture" id=16]
+[ext_resource path="res://res/chara/player/atk2_1.png" type="Texture" id=17]
+[ext_resource path="res://res/chara/player/atk2_2.png" type="Texture" id=18]
+[ext_resource path="res://res/chara/player/atk2_3.png" type="Texture" id=19]
+[ext_resource path="res://res/chara/player/skl1_2.png" type="Texture" id=20]
+[ext_resource path="res://res/chara/player/atkA_6.png" type="Texture" id=21]
+[ext_resource path="res://res/chara/player/atkA_1.png" type="Texture" id=22]
+[ext_resource path="res://res/chara/player/atkA_2.png" type="Texture" id=23]
+[ext_resource path="res://res/chara/player/atkA_3.png" type="Texture" id=24]
+[ext_resource path="res://res/chara/player/atkA_4.png" type="Texture" id=25]
+[ext_resource path="res://res/chara/player/atkA_5.png" type="Texture" id=26]
+[ext_resource path="res://res/chara/player/atk3_4.png" type="Texture" id=27]
+[ext_resource path="res://res/chara/player/atkb_1.png" type="Texture" id=28]
+[ext_resource path="res://res/chara/player/atkb_2.png" type="Texture" id=29]
+[ext_resource path="res://res/chara/player/atkb_3.png" type="Texture" id=30]
+[ext_resource path="res://res/chara/player/atkb_4.png" type="Texture" id=31]
+[ext_resource path="res://res/chara/player/atkb_5.png" type="Texture" id=32]
+[ext_resource path="res://res/chara/player/atkb_6.png" type="Texture" id=33]
+[ext_resource path="res://res/chara/player/hit1.png" type="Texture" id=34]
+[ext_resource path="res://res/chara/player/hit2.png" type="Texture" id=35]
+[ext_resource path="res://res/chara/player/hit3.png" type="Texture" id=36]
+[ext_resource path="res://res/chara/player/hit4.png" type="Texture" id=37]
+[ext_resource path="res://res/chara/player/hit5.png" type="Texture" id=38]
+[ext_resource path="res://res/chara/player/hit6.png" type="Texture" id=39]
+[ext_resource path="res://res/chara/player/hit7.png" type="Texture" id=40]
+[ext_resource path="res://res/chara/player/jump_3.png" type="Texture" id=41]
+[ext_resource path="res://res/chara/player/idle.png" type="Texture" id=42]
+[ext_resource path="res://res/chara/player/jump_1.png" type="Texture" id=43]
+[ext_resource path="res://res/chara/player/jump_2.png" type="Texture" id=44]
+[ext_resource path="res://res/chara/player/move1.png" type="Texture" id=45]
+[ext_resource path="res://res/chara/player/move2.png" type="Texture" id=46]
+[ext_resource path="res://res/chara/player/move3.png" type="Texture" id=47]
+[ext_resource path="res://res/chara/player/move4.png" type="Texture" id=48]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	COLOR.argb = vec4(texture(TEXTURE,UV).a,color.rgb);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+shader = SubResource( 1 )
+shader_param/color = Color( 1, 0.184314, 0.184314, 1 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+radius = 3.92442
+height = 8.86186
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "aoyi1"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.45, 0.55, 0.65, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "move"
+}, {
+"args": [ true ],
+"method": "ghostLk"
+}, {
+"args": [ 1500.0 ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "end"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "gravLk"
+}, {
+"args": [ 0.2, 10.0, 0.0, 0.0, 0.2 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "aoyi" ],
+"method": "se"
+}, {
+"args": [ "atk3", 1.5 ],
+"method": "se"
+}, {
+"args": [ "huiChen2" ],
+"method": "newEff"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.15, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.660828, -7.43261 ), Vector2( -0.0701454, -14.3769 ), Vector2( 2.92686, 0.0233712 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.25, 0.35, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "quan" ],
+"method": "newEff"
+}, {
+"args": [ "aoyi1" ],
+"method": "newEff"
+}, {
+"args": [ true ],
+"method": "peneLk"
+}, {
+"args": [  ],
+"method": "aoyi1Run"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 2 ],
+"method": "setDefSt"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.25, 0.3, 0.45, 0.55, 0.65, 0.7, 0.85, 0.95, 1.05, 1.05, 1.1, 1.15, 1.2, 1.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.15, 0.4, 0.55, 0.6, 0.8, 0.95, 1.05, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 100.0 ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "end"
+}, {
+"args": [ 100.0 ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "end"
+}, {
+"args": [ 300.0 ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "end"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.55, 0.65, 0.95, 1.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 1.0, 50.0, 0.0, 0.1, 0.1 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+}, {
+"args": [ 1.0, 50.0, 0.0, 0.12, 0.12 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+}, {
+"args": [ 1.0, 10.0, 200.0, 0.15, 0.15 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.55, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "atk1", 1.2 ],
+"method": "se"
+}, {
+"args": [ "atk1" ],
+"method": "se"
+}, {
+"args": [ "atk3" ],
+"method": "se"
+}, {
+"args": [ "huiChen2" ],
+"method": "newEff"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.95 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.92686, 0.0233712 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 1.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 1.05, 1.1, 1.15, 1.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "gravLk"
+}, {
+"args": [  ],
+"method": "move"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "atkA", 15, 1.0 ],
+"method": "ifDown"
+}, {
+"args": [ 0.0, -800.0 ],
+"method": "move"
+}, {
+"args": [ "bo1" ],
+"method": "newEff"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 1.0, 50.0, -200.0, 0.15, 0.15 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15.2043, -0.146194 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "ghostLk"
+}, {
+"args": [ "atk5", 0.6 ],
+"method": "se"
+}, {
+"args": [ 0.25, 60.0, 1.0 ],
+"method": "shake"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.35, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.35, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 200.0, 0.0 ],
+"method": "move"
+}, {
+"args": [ 0.0, 600.0 ],
+"method": "move"
+}, {
+"args": [ 0.0, 100.0 ],
+"method": "move"
+}, {
+"args": [ 9 ],
+"method": "setActLv"
+}, {
+"args": [  ],
+"method": "end"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 1.0, 0.0, 200.0, 0.18, 0.18 ],
+"method": "atk"
+}, {
+"args": [  ],
+"method": "offAtk"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "huiChen2" ],
+"method": "newEff"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Position2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.306747, 2.36928e-006 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "ghostLk"
+}, {
+"args": [ "atk5", 1.2 ],
+"method": "se"
+}, {
+"args": [ false ],
+"method": "ghostLk"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 34 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.6, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "move"
+}, {
+"args": [  ],
+"method": "end"
+}, {
+"args": [ "hit", 100, 0.4 ],
+"method": "play"
+}, {
+"args": [ "down" ],
+"method": "se"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 42 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null, null ],
+"method": "move"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("spr/Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -14.4277 ), Vector2( 0, -13 ), Vector2( 0, -14.4277 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("spr/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.92 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 41 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "jumpDown" ],
+"method": "se"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=11]
+
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("spr/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -14 ), Vector2( 0, -15 ), Vector2( 0, -14 ), Vector2( 0, -15 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[node name="player" instance=ExtResource( 1 )]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource( 2 )
+
+[node name="Area2D" parent="." index="0"]
+editor/display_folded = false
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 8.07642, -5.03538 )
+
+[node name="Sprite" type="Sprite" parent="spr" index="0"]
+material = SubResource( 2 )
+use_parent_material = true
+position = Vector2( 0, -14 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" parent="." index="2" instance=ExtResource( 4 )]
+current = false
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+visible = false
+position = Vector2( 0, -7.48952 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "idle"
+playback_process_mode = 0
+anims/aoyi1 = SubResource( 4 )
+anims/atk = SubResource( 5 )
+anims/atkA = SubResource( 6 )
+anims/atkB = SubResource( 7 )
+anims/hit = SubResource( 8 )
+anims/idle = SubResource( 9 )
+anims/jump = SubResource( 10 )
+anims/move = SubResource( 11 )
+
+[node name="Position2D" parent="." index="5"]
+position = Vector2( 2.92686, 0.0233712 )
+
+[node name="AudioStreamPlayer2D" parent="." index="6"]
+position = Vector2( -0.0730972, -7.38288 )
+area_mask = 1
+

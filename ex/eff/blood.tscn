@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://core/eff.tscn" type="PackedScene" id=1]
+[ext_resource path="res://res/eff/blood/5.png" type="Texture" id=2]
+[ext_resource path="res://res/eff/blood/1.png" type="Texture" id=3]
+[ext_resource path="res://res/eff/blood/2.png" type="Texture" id=4]
+[ext_resource path="res://res/eff/blood/3.png" type="Texture" id=5]
+[ext_resource path="res://res/eff/blood/4.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ) ]
+}
+
+[node name="eff" instance=ExtResource( 1 )]
+
+[node name="Sprite" type="Sprite" parent="spr" index="0"]
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+

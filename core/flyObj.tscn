@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://core/obj.tscn" type="PackedScene" id=1]
+[ext_resource path="res://core/flyObj.gd" type="Script" id=2]
+[ext_resource path="res://res/eff/bo1/1.png" type="Texture" id=3]
+[ext_resource path="res://res/eff/bo1/2.png" type="Texture" id=4]
+[ext_resource path="res://res/eff/bo1/3.png" type="Texture" id=5]
+[ext_resource path="res://res/eff/bo1/4.png" type="Texture" id=6]
+[ext_resource path="res://res/eff/bo1/5.png" type="Texture" id=7]
+[ext_resource path="res://res/eff/bo1/6.png" type="Texture" id=8]
+[ext_resource path="res://res/eff/bo1/7.png" type="Texture" id=9]
+[ext_resource path="res://res/eff/bo1/8.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "idle"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("spr/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 1.0, 0.0, 200.0, 0.15, 0.15 ],
+"method": "atk"
+} ]
+}
+
+[node name="flyObj" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="spr" index="0"]
+position = Vector2( 0.369751, -15.9747 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/idle = SubResource( 1 )
+
